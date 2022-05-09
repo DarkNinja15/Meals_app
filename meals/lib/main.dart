@@ -20,8 +20,10 @@ class MyApp extends StatelessWidget {
           fontFamily: GoogleFonts.raleway().fontFamily,
           textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
-              bodyText2:
-                  TextStyle(color: Color.fromRGBO(20, 51, 51, 1), fontSize: 20),
+              bodyText2: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
               headline1: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
