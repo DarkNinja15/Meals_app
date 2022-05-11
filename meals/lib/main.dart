@@ -16,25 +16,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-            primarySwatch: Colors.pink,
-            canvasColor: Color.fromRGBO(255, 254, 229, 1),
-            fontFamily: GoogleFonts.raleway().fontFamily,
-            textTheme: ThemeData.light().textTheme.copyWith(
-                bodyText1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
-                bodyText2: TextStyle(
-                    color: Color.fromRGBO(20, 51, 51, 1),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-                headline1: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: GoogleFonts.robotoCondensed().fontFamily))),
-        title: 'MealTime',
-        home: CategoriesScreen(),
-        routes: {
-          CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
-          MealDetailScreen.routeName: (context) => MealDetailScreen()
-        });
+      theme: ThemeData(
+          primarySwatch: Colors.pink,
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          fontFamily: GoogleFonts.raleway().fontFamily,
+          textTheme: ThemeData.light().textTheme.copyWith(
+              bodyText1: TextStyle(color: Color.fromRGBO(20, 51, 51, 1)),
+              bodyText2: TextStyle(
+                  color: Color.fromRGBO(20, 51, 51, 1),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+              headline1: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.robotoCondensed().fontFamily))),
+      title: 'MealTime',
+      home: CategoriesScreen(),
+      routes: {
+        CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
+        MealDetailScreen.routeName: (context) => MealDetailScreen(),
+      },
+      // onGenerateRoute: (settings) {
+      //   print(settings.arguments);
+      //   return MaterialPageRoute(builder: ((context) => CategoriesScreen()));
+      // },
+      // onUnknownRoute: (settinds){
+      //   return MaterialPageRoute(builder: ((context) => CategoriesScreen()));
+      // },
+    );
   }
 }
