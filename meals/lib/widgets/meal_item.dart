@@ -40,12 +40,92 @@ class MealItem extends StatelessWidget {
                       height: 250,
                       width: double.infinity,
                       fit: BoxFit.cover,
-                    ))
+                    )),
+                Positioned(
+                  bottom: 20,
+                  right: 10,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    width: 300,
+                    color: Colors.black54,
+                    child: Text(
+                      title,
+                      style: TextStyle(fontSize: 26, color: Colors.white),
+                      overflow: TextOverflow.fade,
+                      softWrap: true,
+                    ),
+                  ),
+                )
               ],
-            )
+            ),
+            Padding(
+                padding: const EdgeInsets.all(20),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.schedule),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text('${duration}'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.work),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text(complexityText)
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.money),
+                          SizedBox(
+                            width: 6,
+                          ),
+                          Text(afforadabilityText)
+                        ],
+                      )
+                    ]))
           ],
         ),
       ),
     );
+  }
+
+  String get complexityText {
+    switch (complexity) {
+      case Complexity.Simple:
+        return 'Simple';
+        break;
+      case Complexity.Challenging:
+        return 'Challenging';
+        break;
+      case Complexity.Hard:
+        return 'Hard';
+        break;
+      default:
+        return 'Unknown';
+    }
+  }
+
+  String get afforadabilityText {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return 'Affordable';
+        break;
+      case Affordability.Luxurious:
+        return 'Expensive';
+        break;
+      case Affordability.Pricey:
+        return 'Pricey';
+        break;
+      default:
+        return 'Unknown';
+    }
   }
 }
