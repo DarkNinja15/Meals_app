@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:meals/screens/categories_screen.dart';
 import 'package:meals/screens/category_meals_screen.dart';
 import 'package:meals/screens/meal_detail_screen.dart';
+import 'package:meals/screens/tabs_screen.dart';
 
 import 'widgets/home_page.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontFamily: GoogleFonts.robotoCondensed().fontFamily))),
       title: 'MealTime',
-      home: CategoriesScreen(),
+      home: TabsScreen(),
       routes: {
         CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
         MealDetailScreen.routeName: (context) => MealDetailScreen(),
