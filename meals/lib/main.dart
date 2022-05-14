@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals/screens/categories_screen.dart';
 import 'package:meals/screens/category_meals_screen.dart';
+import 'package:meals/screens/filters_scree.dart';
 import 'package:meals/screens/meal_detail_screen.dart';
 import 'package:meals/screens/tabs_screen.dart';
 
@@ -34,14 +35,16 @@ class MyApp extends StatelessWidget {
       title: 'MealTime',
       home: TabsScreen(),
       routes: {
+        TabsScreen.routeName: (context) => TabsScreen(),
         CategoryMealScreen.routeName: (context) => CategoryMealScreen(),
         MealDetailScreen.routeName: (context) => MealDetailScreen(),
+        FilterScreen.routeName: (context) => FilterScreen()
       },
       // onGenerateRoute: (settings) {
       //   print(settings.arguments);
       //   return MaterialPageRoute(builder: ((context) => CategoriesScreen()));
       // },
-      // onUnknownRoute: (settinds){
+      // onUnknownRoute: (settings){
       //   return MaterialPageRoute(builder: ((context) => CategoriesScreen()));
       // },
     );

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meals/screens/filters_scree.dart';
+import 'package:meals/screens/tabs_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
 
-  Widget buildListTile(String title, IconData icon) {
+  Widget buildListTile(String title, IconData icon, BuildContext context) {
     return ListTile(
       leading: Icon(
         icon,
@@ -16,7 +18,13 @@ class MainDrawer extends StatelessWidget {
             fontFamily: GoogleFonts.robotoCondensed().fontFamily,
             fontWeight: FontWeight.bold),
       ),
-      onTap: () {},
+      onTap: () {
+        if (title == 'Meals') {
+          Navigator.pushNamed(context, TabsScreen.routeName);
+        } else {
+          Navigator.pushNamed(context, FilterScreen.routeName);
+        }
+      },
     );
   }
 
@@ -43,10 +51,12 @@ class MainDrawer extends StatelessWidget {
           buildListTile(
             'Meals',
             Icons.restaurant,
+            context,
           ),
           buildListTile(
             'Filters',
             Icons.settings,
+            context,
           ),
         ],
       ),
