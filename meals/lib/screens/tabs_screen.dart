@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:meals/screens/categories_screen.dart';
-import 'package:meals/screens/favouries_screen.dart';
-import 'package:meals/widgets/main_drawer.dart';
+
+import '../widgets/main_drawer.dart';
+import './categories_screen.dart';
+import '../models/meal.dart';
+import 'favouries_screen.dart';
 
 class TabsScreen extends StatefulWidget {
-  static const routeName = '/tab-screen';
-  const TabsScreen({Key? key}) : super(key: key);
+  final List<Meal> favoriteMeals;
+
+  TabsScreen(this.favoriteMeals);
 
   @override
-  State<TabsScreen> createState() => _TabsScreenState();
+  _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, dynamic>> _pages = [
-    {'page': CategoriesScreen(), 'title': 'Categories'},
-    {'page': FavoritesScreen(), 'title': 'Favourites'}
-  ];
-
+  List<Map<String, Object>> _pages = [];
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': 'Categories',
+      },
+      {
+        'page': FavoritesScreen(widget.favoriteMeals),
+        'title': 'Your Favorite',
+      },
+    ];
+    super.initState();
+  }
 
   void _selectPage(int index) {
     setState(() {
@@ -29,26 +43,28 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_pages[_selectedPageIndex]['title']),
+        title: Text((_pages[_selectedPageIndex]['title']).toString()),
       ),
       drawer: MainDrawer(),
-      body: _pages[_selectedPageIndex]['page'],
+      body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.yellow,
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Theme.of(context).accentColor,
         currentIndex: _selectedPageIndex,
-        type: BottomNavigationBarType.shifting,
+        // type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: Icon(Icons.category),
-              label: 'Categories'),
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.category),
+            label: 'Categories',
+          ),
           BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: Icon(Icons.star),
-              label: 'Favourites'),
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.star),
+            label: 'Favorites',
+          ),
         ],
       ),
     );

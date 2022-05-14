@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals/screens/filters_screen.dart';
-import 'package:meals/screens/tabs_screen.dart';
+
+import '../screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
-
   Widget buildListTile(String title, IconData icon, BuildContext context) {
     return ListTile(
       leading: Icon(
@@ -15,14 +13,17 @@ class MainDrawer extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-            fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-            fontWeight: FontWeight.bold),
+          fontFamily: GoogleFonts.robotoCondensed().fontFamily,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       onTap: () {
         if (title == 'Meals') {
-          Navigator.pushReplacementNamed(context, TabsScreen.routeName);
-        } else {
-          Navigator.pushReplacementNamed(context, FilterScreen.routeName);
+          Navigator.of(context).pushReplacementNamed('/');
+        }
+        if (title == 'Filters') {
+          Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
         }
       },
     );
@@ -32,13 +33,13 @@ class MainDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
-        children: [
+        children: <Widget>[
           Container(
-            color: Colors.yellow,
             height: 120,
             width: double.infinity,
             padding: EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
+            color: Colors.yellowAccent,
             child: Text(
               'Cooking Up!',
               style: TextStyle(
@@ -47,17 +48,11 @@ class MainDrawer extends StatelessWidget {
                   color: Theme.of(context).primaryColor),
             ),
           ),
-          SizedBox(height: 20),
-          buildListTile(
-            'Meals',
-            Icons.restaurant,
-            context,
+          SizedBox(
+            height: 20,
           ),
-          buildListTile(
-            'Filters',
-            Icons.settings,
-            context,
-          ),
+          buildListTile('Meals', Icons.restaurant, context),
+          buildListTile('Filters', Icons.settings, context),
         ],
       ),
     );
