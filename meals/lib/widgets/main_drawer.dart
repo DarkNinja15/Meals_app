@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meals/screens/filters_scree.dart';
+import 'package:meals/screens/filters_screen.dart';
 import 'package:meals/screens/tabs_screen.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -20,9 +20,9 @@ class MainDrawer extends StatelessWidget {
       ),
       onTap: () {
         if (title == 'Meals') {
-          Navigator.pushNamed(context, TabsScreen.routeName);
+          Navigator.pushReplacementNamed(context, TabsScreen.routeName);
         } else {
-          Navigator.pushNamed(context, FilterScreen.routeName);
+          Navigator.pushReplacementNamed(context, FilterScreen.routeName);
         }
       },
     );
